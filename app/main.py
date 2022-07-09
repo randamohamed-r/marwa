@@ -5,6 +5,7 @@ from turtle import clear
 from bson import ObjectId
 import dbm
 import json
+import os
 from os import abort
 from pickle import PUT
 import MySQLdb
@@ -13,6 +14,11 @@ from flask import Flask, jsonify, render_template, url_for, session, request, re
 from flask_mysqldb import MySQL
 from pyrsistent import m
 from sympy import re
+from flask.cli import load_dotenv
+
+load_dotenv()
+password=os.getenv("DBPASSWORD")
+username=os.getenv("DBUSERNAME")
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -21,8 +27,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 app.config['MYSQL_HOST'] = 'db4free.net'
-app.config['MYSQL_USER'] = 'id18976729_salam'
-app.config['MYSQL_PASSWORD'] = '=?K->23]eWbzdg~d'
+#app.config['MYSQL_USER'] = 'id18976729_salam'
+#app.config['MYSQL_PASSWORD'] = '=?K->23]eWbzdg~d'
 app.config['MYSQL_DB'] = 'drug-interaction'
 mysql = MySQL(app)
 
